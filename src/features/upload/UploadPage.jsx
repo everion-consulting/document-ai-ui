@@ -8,8 +8,8 @@ import { bytesToHuman, createClientFileItem, isAllowedFile } from "../../utils/f
 import "../../styles/upload.css";
 
 export default function UploadPage() {
-    const [items, setItems] = useState([]); // {id, file, status, progress, error, result}
-    const [globalStatus, setGlobalStatus] = useState("idle"); // idle | uploading
+    const [items, setItems] = useState([]);
+    const [globalStatus, setGlobalStatus] = useState("idle"); 
     const [backendResponse, setBackendResponse] = useState(null);
 
     const totalSize = useMemo(
@@ -26,7 +26,7 @@ export default function UploadPage() {
             .map((f) => createClientFileItem(f));
 
         setItems((prev) => {
-            // aynı isim+size tekrar eklenmesin (basit dedupe)
+         
             const key = (f) => `${f.name}__${f.size}`;
             const existingKeys = new Set(prev.map((p) => key(p.file)));
             const merged = [...prev];
@@ -51,7 +51,7 @@ export default function UploadPage() {
         setGlobalStatus("uploading");
         setBackendResponse(null);
 
-        // hepsini uploading yap
+       
         setItems((prev) =>
             prev.map((it) => ({
                 ...it,

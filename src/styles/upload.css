@@ -15,25 +15,25 @@
   display: block;
   object-fit: contain;
 
-  /* LOGO'YU NET GÖSTEREN ASIL KISIM */
-  padding: 10px;                       /* logoya nefes */
+  
+  padding: 10px;                       
   border-radius: 16px;
-  background: rgba(255,255,255,.94);   /* koyu zeminde okunurluk */
+  background: rgba(255,255,255,.94);   
   border: 1px solid rgba(255,255,255,.55);
 
-  /* daha “net” görünüm için */
+  
   box-shadow:
     0 16px 44px rgba(0,0,0,.50),
     0 0 0 1px rgba(110,168,255,.18) inset;
 
-  /* bazı tarayıcılarda png/svgyi daha keskin gösterir */
+ 
   image-rendering: -webkit-optimize-contrast;
   transform: translateZ(0);
   
 }
 
 
-/* Eğer projede global img {width:100%} varsa bunu da ekle */
+
 .brand img{
   width: auto;
 }

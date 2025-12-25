@@ -42,7 +42,7 @@ export default function FileDropzone({ onFiles, disabled }) {
         multiple
         onChange={handleChange}
         style={{ display: "none" }}
-        // kabul listesi (istersen genişlet)
+       
         accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
       />
 
