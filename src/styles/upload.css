@@ -1,0 +1,394 @@
+/* --- Brand upgrade --- */
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+
+.brandLogo{
+  width: 75px !important;
+  height: 75px !important;
+
+  flex: 0 0 auto;
+  display: block;
+  object-fit: contain;
+
+  /* LOGO'YU NET GÖSTEREN ASIL KISIM */
+  padding: 10px;                       /* logoya nefes */
+  border-radius: 16px;
+  background: rgba(255,255,255,.94);   /* koyu zeminde okunurluk */
+  border: 1px solid rgba(255,255,255,.55);
+
+  /* daha “net” görünüm için */
+  box-shadow:
+    0 16px 44px rgba(0,0,0,.50),
+    0 0 0 1px rgba(110,168,255,.18) inset;
+
+  /* bazı tarayıcılarda png/svgyi daha keskin gösterir */
+  image-rendering: -webkit-optimize-contrast;
+  transform: translateZ(0);
+  
+}
+
+
+/* Eğer projede global img {width:100%} varsa bunu da ekle */
+.brand img{
+  width: auto;
+}
+.logoMark{
+  position: relative;
+  width: 18px;
+  height: 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-left: 12px;
+  margin-right: 8px;
+}
+
+.logoDot{
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--primary);
+  box-shadow: 0 0 0 7px rgba(110,168,255,.18), 0 0 18px rgba(110,168,255,.45);
+  animation: dotPulse 1.6s ease-in-out infinite;
+}
+
+.logoRing{
+  position:absolute;
+  inset:-6px;
+  border-radius:999px;
+  border:1px solid rgba(110,168,255,.35);
+  filter: drop-shadow(0 0 10px rgba(110,168,255,.25));
+  animation: ringSpin 4.5s linear infinite;
+  opacity:.9;
+}
+
+.brandTitleRow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.brandBadges{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.badge{
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.6px;
+  padding:5px 10px;
+  border-radius:999px;
+  border:1px solid rgba(110,168,255,.35);
+  background: rgba(110,168,255,.14);
+  color: rgba(255,255,255,.92);
+  transform: translateY(0);
+  animation: badgeFloat 2.6s ease-in-out infinite;
+}
+
+.badge.ghost{
+  border-color: rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  animation-delay: .35s;
+}
+
+.brandTitle{
+  font-weight: 900;
+  font-size: clamp(18px, 1.3vw, 22px);
+  letter-spacing: .2px;
+}
+
+.strongSub{
+  font-size: clamp(13px, 1vw, 15px);
+  color: rgba(255,255,255,.74);
+  margin-top: 4px;
+}
+.shimmer{
+  background: linear-gradient(90deg,
+    rgba(255,255,255,.95),
+    rgba(110,168,255,.95),
+    rgba(255,255,255,.95)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmerMove 3.2s ease-in-out infinite;
+}
+
+
+
+@keyframes dotPulse{
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 7px rgba(110,168,255,.16), 0 0 18px rgba(110,168,255,.38); }
+  50%      { transform: scale(1.12); box-shadow: 0 0 0 10px rgba(110,168,255,.12), 0 0 26px rgba(110,168,255,.55); }
+}
+
+@keyframes ringSpin{
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes shimmerMove{
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes badgeFloat{
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-2px); }
+}
+
+/* Hareket azaltma tercihine saygı */
+@media (prefers-reduced-motion: reduce){
+  .logoDot, .logoRing, .shimmer, .badge { animation: none !important; }
+}
+
+
+.page{
+  min-height: 100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:16px 18px;
+  border-bottom:1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+
+
+.actions{ display:flex; gap:10px; }
+
+.btn{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+  padding:10px 12px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:600;
+  font-size:13px;
+}
+.btn:disabled{ opacity:.55; cursor:not-allowed; }
+.btn.primary{
+  background: rgba(110,168,255,.16);
+  border-color: rgba(110,168,255,.35);
+}
+.btn.secondary{
+  background: rgba(255,255,255,.04);
+}
+
+.grid{
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 16px;
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:16px;
+  flex:1;
+}
+
+@media (max-width: 900px){
+  .grid{ grid-template-columns: 1fr; }
+  .topbar{ flex-direction:column; align-items:flex-start; }
+  .actions{ width:100%; }
+  .btn{ flex:1; }
+}
+@media (max-width: 520px){
+  .brandLogo{
+    width: 60px !important;
+    height: 60px !important;
+    max-width: 60px !important;
+    max-height: 60px !important;
+    padding: 8px;
+    border-radius: 14px;
+  }
+}
+
+
+.card{
+  background: rgba(18,26,42,.72);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.28);
+}
+
+.cardHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:10px;
+}
+.cardTitle{ font-size:14px; font-weight:800; }
+.cardSub{ font-size:12px; color: var(--muted); margin-top:4px; }
+
+.divider{
+  height:1px;
+  background: var(--line);
+  margin: 14px 0;
+}
+
+.dropzone{
+  border:1.5px dashed rgba(255,255,255,.22);
+  border-radius:16px;
+  padding:18px;
+  cursor:pointer;
+  transition: .15s ease;
+  background: rgba(255,255,255,.03);
+}
+.dropzone.dragOver{
+  border-color: rgba(110,168,255,.65);
+  background: rgba(110,168,255,.10);
+}
+.dropzone.disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+.dropzoneInner{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.dropTitle{ font-weight:800; font-size:14px; }
+.dropSub{ font-size:12px; color: var(--muted); }
+.dropHint{ font-size:12px; color: rgba(255,255,255,.55); margin-top:6px; }
+
+.empty{
+  padding:14px;
+  border:1px dashed rgba(255,255,255,.15);
+  border-radius:14px;
+  color: var(--muted);
+  background: rgba(255,255,255,.02);
+}
+
+.fileList{ display:flex; flex-direction:column; gap:10px; }
+
+.fileRow{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:14px;
+  background: rgba(0,0,0,.12);
+}
+
+.fileLeft{
+  display:flex;
+  gap:10px;
+  min-width:0;
+}
+
+.thumb{
+  width:44px; height:44px;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.05);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex: 0 0 auto;
+}
+.thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+.docIcon{ font-size:12px; font-weight:900; opacity:.85; }
+
+.meta{ min-width:0; }
+.name{
+  font-size:13px;
+  font-weight:700;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width: 520px;
+}
+.sub{ font-size:12px; color: var(--muted); margin-top:2px; }
+
+.statusLine{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:8px;
+}
+
+.pill{
+  font-size:11px;
+  font-weight:800;
+  padding:4px 8px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  text-transform: uppercase;
+  letter-spacing:.5px;
+}
+.pill.queued{ opacity:.75; }
+.pill.uploading{ border-color: rgba(110,168,255,.45); background: rgba(110,168,255,.12); }
+.pill.success{ border-color: rgba(120,255,170,.35); background: rgba(120,255,170,.10); }
+.pill.error{ border-color: rgba(255,107,107,.45); background: rgba(255,107,107,.10); }
+
+.progressWrap{
+  flex:1;
+  height:8px;
+  background: rgba(255,255,255,.08);
+  border-radius:999px;
+  overflow:hidden;
+  min-width: 120px;
+}
+.progressBar{
+  height:100%;
+  background: rgba(110,168,255,.75);
+  border-radius:999px;
+  transition: width .12s linear;
+}
+
+.errorText{
+  color: rgba(255,107,107,.95);
+  font-size:12px;
+  font-weight:700;
+}
+
+.iconBtn{
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+  width:34px; height:34px;
+  border-radius:12px;
+  cursor:pointer;
+}
+.iconBtn:hover{ background: rgba(255,255,255,.06); }
+
+.response{
+  width:100%;
+}
+.json{
+  margin:0;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+  overflow:auto;
+  max-height: 520px;
+  font-size:12px;
+  line-height:1.45;
+}
+
+.footer{
+  padding: 12px 16px;
+  border-top:1px solid var(--line);
+  color: var(--muted);
+  font-size:12px;
+}
