@@ -1,3 +1,102 @@
+
+.grid3{
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+
+.grid3.docsOpen{
+  grid-template-columns: 1fr 1fr 420px; 
+}
+
+
+.docsSide{
+  position: sticky;
+  top: 92px;               
+  height: calc(100vh - 120px);
+  overflow: hidden;          
+}
+
+
+.docsScroll{
+  height: calc(100% - 90px); 
+  overflow: auto;
+  padding-right: 6px;
+}
+
+
+.docRowBtn{
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 14px;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.docRowBtn:hover{ background: rgba(255,255,255,.06); }
+.docRowBtn.active{ outline: 2px solid rgba(255,255,255,.18); }
+
+.docRowTop{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.docRowDate{
+  color: rgba(255,255,255,.85) !important;
+  opacity: 1 !important;
+  white-space: nowrap;
+}
+
+
+@media (max-width: 1100px){
+  .grid3.docsOpen{ grid-template-columns: 1fr; }
+  .docsSide{
+    position: relative;
+    top: auto;
+    height: auto;
+  }
+  .docsScroll{ height: auto; }
+}
+
+
+.tabsRow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.tabBtn{
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.85);
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tabBtn.active{
+  background: rgba(120,180,255,.14);
+  border-color: rgba(120,180,255,.35);
+  color: #fff;
+}
+
+.docsList{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  max-height: 210px;    
+  overflow:auto;        
+  padding-right: 6px;    
+}
+
+
+
 /* --- Brand upgrade --- */
 
 .brand{
@@ -146,7 +245,7 @@
   50%      { transform: translateY(-2px); }
 }
 
-/* Hareket azaltma tercihine saygı */
+
 @media (prefers-reduced-motion: reduce){
   .logoDot, .logoRing, .shimmer, .badge { animation: none !important; }
 }
@@ -195,8 +294,9 @@
   margin: 0 auto;
   padding: 16px;
   display:grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap:16px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px;
+  align-items: stretch;
   flex:1;
 }
 
@@ -219,12 +319,17 @@
 
 
 .card{
+  height: calc(100vh - 170px); 
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
   background: rgba(18,26,42,.72);
   border:1px solid var(--line);
   border-radius:18px;
   padding:14px;
   box-shadow: 0 10px 30px rgba(0,0,0,.28);
 }
+
 
 .cardHeader{
   display:flex;

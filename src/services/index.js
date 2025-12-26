@@ -1,5 +1,5 @@
 
-const API_BASE_URL = "https://dosya-bildirim-vrosq.ondigitalocean.app";
+const API_BASE_URL = "http://127.0.0.1:8000";
 
 const PROTECTED_ENDPOINTS = ['/api/', '/core/'];
 

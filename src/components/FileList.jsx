@@ -19,11 +19,11 @@ export default function FileList({ items, onRemove }) {
 
   const closeRemoveModal = () => {
     setClosing(true);
-    // animasyon süresi kadar bekle, sonra kapat
+   
     setTimeout(() => {
       setRemoveModal({ open: false, id: null, name: "" });
       setClosing(false);
-    }, 180); // CSS ile aynı süre
+    }, 180); 
   };
 
 
@@ -33,7 +33,7 @@ export default function FileList({ items, onRemove }) {
     closeRemoveModal();
   };
 
-  // ESC ile kapat + body scroll kilidi
+ 
   useEffect(() => {
     if (!removeModal.open) return;
 
@@ -66,7 +66,7 @@ export default function FileList({ items, onRemove }) {
                   alt={it.file.name}
                   src={URL.createObjectURL(it.file)}
                   onLoad={(e) => {
-                    // memory leak azaltmak için
+                    
                     URL.revokeObjectURL(e.currentTarget.src);
                   }}
                 />

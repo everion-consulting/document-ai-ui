@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/response.css";
 
 export default function ResponsePanel({ response }) {
   if (!response) {
